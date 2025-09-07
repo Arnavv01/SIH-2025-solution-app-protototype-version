@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Crop Advisory System</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">🌾 Smart Crop Advisory</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarNav" aria-controls="navbarNav" 
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav me-3">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <!-- Language Toggle -->
+        <select id="langToggle" class="form-select form-select-sm" style="width: 120px;">
+          <option value="en">English</option>
+          <option value="hi">हिंदी</option>
+        </select>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-light text-center text-dark py-5">
+    <div class="container">
+      <h1 id="heroTitle" class="fw-bold">Welcome to Smart Crop Advisory System</h1>
+      <p id="heroSubtitle" class="lead">Helping farmers make better decisions using weather & crop insights</p>
+      <a id="heroBtn" href="#features" class="btn btn-success btn-lg mt-3">🚜 Explore Features</a>
+    </div>
+  </section>
+
+<!-- Features -->
+<section id="features" class="py-5">
+  <div class="container text-center">
+    <h2 id="featuresTitle" class="fw-bold mb-4">Features</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <a href="{{ url_for('weather') }}" class="text-decoration-none text-dark">
+          <i class="fas fa-cloud-sun fa-3x text-success mb-3"></i>
+          <h5 id="weatherTitle">Weather Updates</h5>
+          <p id="weatherDesc">Get real-time weather forecasts to plan farming activities.</p>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="{{ url_for('crops') }}" class="text-decoration-none text-dark">
+          <i class="fas fa-seedling fa-3x text-success mb-3"></i>
+          <h5 id="cropTitle">Crop Guidance</h5>
+          <p id="cropDesc">Recommendations on which crops to grow based on conditions.</p>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="{{ url_for('market') }}" class="text-decoration-none text-dark">
+          <i class="fas fa-handshake fa-3x text-success mb-3"></i>
+          <h5 id="marketTitle">Market Info</h5>
+          <p id="marketDesc">Stay updated with market trends and crop prices.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- About -->
+  <section id="about" class="bg-light py-5">
+    <div class="container">
+      <h2 id="aboutTitle" class="fw-bold text-center mb-4">About Us</h2>
+      <p id="aboutDesc" class="text-center">
+        This project is a part of Smart India Hackathon (SIH). Our goal is to empower 
+        farmers with accessible smart technology that provides useful insights, better 
+        decision-making, and ultimately improves their livelihood. - Team Srajan
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <h2 id="contactTitle" class="fw-bold text-center mb-4">Contact Us</h2>
+      <form class="mx-auto" style="max-width: 600px;">
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Your Name" required>
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Your Email" required>
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
+        </div>
+        <button id="contactBtn" type="submit" class="btn btn-success w-100">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-success text-white text-center py-3">
+    <p class="mb-0">&copy; 2025 Smart Crop Advisory | Built for SIH</p>
+  </footer>
+  <!-- Problem & Solution -->
+<section id="problem-solution" class="py-5 bg-white">
+  <div class="container">
+    <h2 id="psTitle" class="fw-bold text-center mb-4">Problem & Solution</h2>
+    <div class="row">
+      <!-- Problem -->
+      <div class="col-md-6 mb-4">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <h4 id="problemHeading" class="text-danger fw-bold">🚨 The Problem</h4>
+          <p id="problemPara1">
+            A majority of small and marginal farmers in India rely on traditional
+            knowledge, local shopkeepers, or guesswork for crop selection, pest control,
+            and fertilizer use. They lack access to personalized, real-time advisory
+            services that account for soil type, weather conditions, and crop history.
+          </p>
+          <p id="problemPara2">
+            This leads to <b>poor yield</b>, <b>excessive input costs</b>, and
+            <b>environmental degradation</b> due to overuse of chemicals. Barriers like
+            language, low digital literacy, and absence of localized tools make the
+            situation worse.
+          </p>
+        </div>
+      </div>
+
+      <!-- Solution -->
+      <div class="col-md-6 mb-4">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <h4 id="solutionHeading" class="text-success fw-bold">💡 Our Solution</h4>
+          <p id="solutionIntro">
+            The <b>Smart Crop Advisory System</b> empowers farmers with:
+          </p>
+          <ul class="list-unstyled">
+            <li id="solution1">✅ <b>Personalized Guidance</b> based on soil, weather, and crop history</li>
+            <li id="solution2">✅ <b>Weather-Based Alerts</b> for irrigation, sowing, and harvesting</li>
+            <li id="solution3">✅ <b>Localized Language Support</b> (English & Hindi, expandable)</li>
+            <li id="solution4">✅ <b>Market Insights</b> on crop prices & trends</li>
+            <li id="solution5">✅ <b>Farmer-Friendly UI</b> designed for low digital literacy</li>
+          </ul>
+          <p id="solutionOutro">
+            This ensures <b>higher yields, reduced costs, and sustainable farming</b>
+            practices for small & marginal farmers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Language Toggle Script -->
+  <script>
+    const translations = {
+      en: {
+        heroTitle: "Welcome to Smart Crop Advisory System",
+        heroSubtitle: "Helping farmers make better decisions using weather & crop insights",
+        heroBtn: "🚜 Explore Features",
+        featuresTitle: "Features",
+        weatherTitle: "Weather Updates",
+        weatherDesc: "Get real-time weather forecasts to plan farming activities.",
+        cropTitle: "Crop Guidance",
+        cropDesc: "Recommendations on which crops to grow based on conditions.",
+        marketTitle: "Market Info",
+        marketDesc: "Stay updated with market trends and crop prices.",
+        aboutTitle: "About Us",
+        aboutDesc: "This project is part of Smart India Hackathon (SIH). Our goal is to empower farmers with accessible technology that provides useful insights, better decision-making, and ultimately improves their livelihood.",
+        contactTitle: "Contact Us",
+        contactBtn: "Send Message",
+        psTitle: "Problem & Solution",
+        problemHeading: "🚨 The Problem",
+        problemPara1: "A majority of small and marginal farmers in India rely on traditional knowledge, local shopkeepers, or guesswork for crop selection, pest control, and fertilizer use. They lack access to personalized, real-time advisory services that account for soil type, weather conditions, and crop history.",
+        problemPara2: "This leads to poor yield, excessive input costs, and environmental degradation due to overuse of chemicals. Barriers like language, low digital literacy, and absence of localized tools make the situation worse.",
+        solutionHeading: "💡 Our Solution",
+        solutionIntro: "The Smart Crop Advisory System empowers farmers with:",
+        solution1: "✅ Personalized Guidance based on soil, weather, and crop history",
+        solution2: "✅ Weather-Based Alerts for irrigation, sowing, and harvesting",
+        solution3: "✅ Localized Language Support (English & Hindi, expandable)",
+        solution4: "✅ Market Insights on crop prices & trends",
+        solution5: "✅ Farmer-Friendly UI designed for low digital literacy",
+        solutionOutro: "This ensures higher yields, reduced costs, and sustainable farming practices for small & marginal farmers."
+      },
+      hi: {
+        heroTitle: "स्मार्ट फसल सलाह प्रणाली में आपका स्वागत है",
+        heroSubtitle: "मौसम और फसल जानकारी से किसानों को बेहतर निर्णय लेने में मदद",
+        heroBtn: "🚜 सुविधाएँ देखें",
+        featuresTitle: "विशेषताएँ",
+        weatherTitle: "मौसम अपडेट",
+        weatherDesc: "खेती की गतिविधियों की योजना बनाने के लिए वास्तविक समय मौसम पूर्वानुमान प्राप्त करें।",
+        cropTitle: "फसल मार्गदर्शन",
+        cropDesc: "परिस्थितियों के आधार पर कौन सी फसल उगानी है, इसकी सिफारिशें।",
+        marketTitle: "बाजार जानकारी",
+        marketDesc: "बाजार की प्रवृत्तियों और फसल की कीमतों से अद्यतन रहें।",
+        aboutTitle: "हमारे बारे में",
+        aboutDesc: "यह परियोजना स्मार्ट इंडिया हैकाथॉन (SIH) का हिस्सा है। हमारा लक्ष्य किसानों को सुलभ तकनीक से सशक्त बनाना है जो उपयोगी अंतर्दृष्टि प्रदान करती है, बेहतर निर्णय लेने में मदद करती है और अंततः उनकी आजीविका में सुधार करती है। - टीम सृजन",
+        contactTitle: "संपर्क करें",
+        contactBtn: "संदेश भेजें",
+        psTitle: "समस्या और समाधान",
+        problemHeading: "🚨 समस्या",
+        problemPara1: "भारत के अधिकांश छोटे और सीमांत किसान फसल चयन, कीट नियंत्रण और उर्वरक उपयोग के लिए पारंपरिक ज्ञान, स्थानीय दुकानदारों या अनुमान पर निर्भर करते हैं। उनके पास मृदा प्रकार, मौसम की स्थिति और फसल इतिहास को ध्यान में रखने वाली व्यक्तिगत, वास्तविक समय की सलाह उपलब्ध नहीं होती।",
+        problemPara2: "इससे कम पैदावार, अत्यधिक लागत और रसायनों के अत्यधिक उपयोग के कारण पर्यावरण को नुकसान होता है। भाषा की बाधाएँ, कम डिजिटल साक्षरता और स्थानीयकृत उपकरणों की अनुपस्थिति समस्या को और गंभीर बना देती हैं।",
+        solutionHeading: "💡 हमारा समाधान",
+        solutionIntro: "स्मार्ट क्रॉप एडवाइजरी सिस्टम किसानों को सक्षम बनाता है:",
+        solution1: "✅ व्यक्तिगत मार्गदर्शन जो मृदा, मौसम और फसल इतिहास पर आधारित हो",
+        solution2: "✅ मौसम आधारित अलर्ट – सिंचाई, बुवाई और कटाई के लिए",
+        solution3: "✅ स्थानीय भाषा समर्थन (अंग्रेज़ी और हिंदी, और अधिक भाषाएँ जोड़ी जा सकती हैं)",
+        solution4: "✅ बाज़ार की जानकारी – फसल के दाम और रुझान",
+        solution5: "✅ किसान-हितैषी इंटरफ़ेस – कम डिजिटल साक्षरता वाले किसानों के लिए सरल",
+        solutionOutro: "इससे छोटे और सीमांत किसानों को अधिक पैदावार, कम लागत और टिकाऊ खेती के अभ्यास सुनिश्चित होते हैं।"
+      }
+    };
+
+    document.getElementById("langToggle").addEventListener("change", function() {
+      const lang = this.value;
+      for (const id in translations[lang]) {
+        document.getElementById(id).innerText = translations[lang][id];
+      }
+    });
+  
+    
+  </script>
+
+</body>
+</html>

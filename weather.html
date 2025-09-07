@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather - Smart Crop Advisory</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <div class="container">
+    <a id="brandName" class="navbar-brand fw-bold" href="{{ url_for('home') }}">🌾 Smart Crop Advisory</a>
+    <div class="d-flex align-items-center">
+      <a id="navDashboard" class="btn btn-outline-light btn-sm me-2" href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a id="navCrops" class="btn btn-outline-light btn-sm me-2" href="{{ url_for('crops') }}">Crop Guidance</a>
+      <a id="navMarket" class="btn btn-outline-light btn-sm me-2" href="{{ url_for('market') }}">Market Info</a>
+      <a id="navFeedback" class="btn btn-outline-light btn-sm" href="{{ url_for('feedback') }}">Feedback</a>
+      <select id="langToggle" class="form-select form-select-sm ms-3" style="width: 120px;">
+        <option value="en">English</option>
+        <option value="hi">हिंदी</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<!-- Weather Section -->
+<div class="container mt-5">
+  <h2 id="pageTitle" class="text-success fw-bold text-center mb-4">🌦 Weather Updates</h2>
+
+  <!-- District Selection Form -->
+  <form method="POST" class="text-center mb-4">
+    <label id="districtLabel" for="city" class="fw-bold">Select District:</label>
+    <select name="city" id="city" class="form-select d-inline-block w-auto ms-2">
+      {% for district, data in locations.items() %}
+        <!-- value stays English (for backend), text changes via JS -->
+        <option value="{{ district }}" data-en="{{ district }}" data-hindi="{{ data.hindi }}">
+          {{ district }}
+        </option>
+      {% endfor %}
+    </select>
+    <button id="weatherBtn" type="submit" class="btn btn-success ms-2">Get Weather</button>
+  </form>
+
+  {% if error %}
+    <div class="alert alert-danger text-center">{{ error }}</div>
+  {% endif %}
+
+  {% if weather %}
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm p-3 text-center hover-scale">
+        <h5 id="tempTitle" class="fw-bold">Temperature</h5>
+        <p id="tempDesc">{{ weather.temperature }} °C</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm p-3 text-center hover-scale">
+        <h5 id="rainTitle" class="fw-bold">Rainfall</h5>
+        <p id="rainDesc">{{ weather.rainfall }} mm</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm p-3 text-center hover-scale">
+        <h5 id="humidityTitle" class="fw-bold">Humidity</h5>
+        <p id="humidityDesc">{{ weather.humidity }} %</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-3">
+    <p>⏰ Last Update: {{ weather.time }}</p>
+  </div>
+  {% endif %}
+</div>
+
+<footer class="bg-success text-white text-center py-3 mt-5">
+  <p class="mb-0">&copy; 2025 Smart Crop Advisory | Built for SIH</p>
+</footer>
+
+<script>
+const translations = {
+  en: {
+    brandName: "🌾 Smart Crop Advisory",
+    navDashboard: "Dashboard",
+    navCrops: "Crop Guidance",
+    navMarket: "Market Info",
+    navFeedback: "Feedback",
+    districtLabel: "Select District:",
+    weatherBtn: "Get Weather",
+    pageTitle: "🌦 Weather Updates",
+    tempTitle: "Temperature",
+    rainTitle: "Rainfall",
+    humidityTitle: "Humidity"
+  },
+  hi: {
+    brandName: "🌾 स्मार्ट फसल सलाह",
+    navDashboard: "डैशबोर्ड",
+    navCrops: "फसल मार्गदर्शन",
+    navMarket: "बाज़ार जानकारी",
+    navFeedback: "प्रतिक्रिया",
+    districtLabel: "जिला चुनें:",
+    weatherBtn: "मौसम देखें",
+    pageTitle: "🌦 मौसम अपडेट",
+    tempTitle: "तापमान",
+    rainTitle: "वृष्टि",
+    humidityTitle: "आर्द्रता"
+  }
+};
+
+const langToggle = document.getElementById("langToggle");
+const cityDropdown = document.getElementById("city");
+
+langToggle.addEventListener("change", function() {
+  const lang = this.value;
+
+  // Update static text
+  for (const id in translations[lang]) {
+    const el = document.getElementById(id);
+    if (el) el.innerText = translations[lang][id];
+  }
+
+  // Update district dropdown labels only
+  for (let option of cityDropdown.options) {
+    if (lang === "hi") {
+      option.text = option.getAttribute("data-hindi");
+    } else {
+      option.text = option.getAttribute("data-en");
+    }
+  }
+});
+</script>
+
+</body>
+</html>

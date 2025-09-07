@@ -1,0 +1,237 @@
+/* ====== Global Styles ====== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f8f9fa; /* light grey */
+  color: #333;
+}
+
+/* ====== Navbar ====== */
+.navbar {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+  font-size: 1.3rem;
+}
+
+.nav-link {
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #ffeb3b !important; /* yellow hover */
+}
+
+/* ====== Hero Section ====== */
+#heroTitle {
+  font-size: 2.5rem;
+}
+
+#heroSubtitle {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.btn-outline-success:hover {
+  background-color: #28a745;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ====== Features Section ====== */
+#features .col-md-4 {
+  transition: transform 0.3s ease-in-out;
+}
+
+#features .col-md-4:hover {
+  transform: translateY(-10px);
+}
+
+#features i {
+  transition: transform 0.3s ease-in-out;
+}
+
+#features .col-md-4:hover i {
+  transform: rotate(15deg);
+}
+
+/* ====== About Section ====== */
+#aboutDesc {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+/* ====== Contact Section ====== */
+#contact form {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#contact input,
+#contact textarea {
+  border-radius: 8px;
+}
+
+#contactBtn {
+  background-color: #28a745;
+  border: none;
+  transition: background 0.3s ease-in-out;
+}
+
+#contactBtn:hover {
+  background-color: #218838;
+}
+
+/* ====== Footer ====== */
+footer {
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 -3px 6px rgba(0,0,0,0.1);
+}
+/* ====== Hero Section with Background Image ====== */
+section.bg-light.text-center.text-dark.py-5 {
+  background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80") no-repeat center center/cover;
+  color: white !important;
+  position: relative;
+  z-index: 1;
+}
+
+section.bg-light.text-center.text-dark.py-5::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* dark overlay for readability */
+  z-index: -1;
+}
+
+#heroTitle {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+#heroSubtitle {
+  font-size: 1.3rem;
+  color: #f1f1f1;
+}
+
+#heroBtn {
+  background-color: #28a745;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+#heroBtn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+/* ====== Features Section with Background Icons ====== */
+#features .col-md-4 {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background icon effect */
+#features .col-md-4::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 80px;
+  height: 80px;
+  opacity: 0.08;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Weather card */
+#features .col-md-4:nth-child(1)::before {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/1163/1163661.png"); /* cloud sun */
+}
+
+/* Crop card */
+#features .col-md-4:nth-child(2)::before {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/2909/2909763.png"); /* seedling */
+}
+
+/* Market card */
+#features .col-md-4:nth-child(3)::before {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/2910/2910768.png"); /* market chart */
+}
+
+/* Hover effect */
+#features .col-md-4:hover {
+  transform: translateY(-8px);
+  transition: transform 0.3s ease-in-out;
+}
+/* ====== Contact Form Styling ====== */
+#contact form {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+#contact input,
+#contact textarea {
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 8px rgba(40, 167, 69, 0.3);
+  outline: none;
+}
+
+#contactBtn {
+  background: #28a745;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+#contactBtn:hover {
+  background: #218838;
+  transform: scale(1.03);
+}
+#problem-solution h4 {
+  margin-bottom: 15px;
+}
+
+#problem-solution .border {
+  background: #fdfdfd;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#problem-solution .border:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop Guidance - Smart Crop Advisory</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">🌾 Smart Crop Advisory</a>
+      <div class="d-flex align-items-center">
+        <a class="btn btn-outline-light btn-sm me-2" href="dashboard.html">Dashboard</a>
+        <a class="btn btn-outline-light btn-sm me-2" href="weather.html">Weather</a>
+        <a class="btn btn-outline-light btn-sm me-2" href="market.html">Market Info</a>
+        <a class="btn btn-outline-light btn-sm" href="feedback.html">Feedback</a>
+        <select id="langToggle" class="form-select form-select-sm ms-3" style="width: 120px;">
+          <option value="en">English</option>
+          <option value="hi">हिंदी</option>
+        </select>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Crop Guidance Section -->
+  <div class="container mt-5">
+    <div class="card shadow-lg p-4">
+      <h2 id="pageTitle" class="text-success fw-bold text-center">🌱 Crop Guidance</h2>
+      <p id="pageDesc" class="text-center text-muted">Select your crop to get personalized advisory</p>
+
+      <div class="text-center mt-4">
+        <select id="cropSelect" class="form-select w-50 mx-auto">
+          <option value="">-- Select Crop --</option>
+          <option value="wheat">Wheat</option>
+          <option value="rice">Rice</option>
+          <option value="maize">Maize</option>
+          <option value="sugarcane">Sugarcane</option>
+          <option value="cotton">Cotton</option>
+        </select>
+      </div>
+
+      <div id="advisoryResult" class="mt-4 text-center p-3 border rounded bg-light text-success fw-bold" style="display:none;"></div>
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        pageTitle: "🌱 Crop Guidance",
+        pageDesc: "Select your crop to get personalized advisory",
+        cropAdvisory: {
+          wheat: "Irrigate once a week. Watch out for rust disease.",
+          rice: "Maintain standing water. Protect from stem borer.",
+          maize: "Ensure proper spacing. Apply nitrogen fertilizer.",
+          sugarcane: "Regular irrigation. Use organic manure.",
+          cotton: "Spray pesticides for bollworm. Ensure sunlight."
+        }
+      },
+      hi: {
+        pageTitle: "🌱 फसल मार्गदर्शन",
+        pageDesc: "व्यक्तिगत सलाह प्राप्त करने के लिए अपनी फसल चुनें",
+        cropAdvisory: {
+          wheat: "साप्ताहिक सिंचाई करें। रस्ट रोग से सावधान रहें।",
+          rice: "खड़े पानी को बनाए रखें। स्टेम बॉरर से बचाएं।",
+          maize: "सुनिश्चित करें कि फसल की दूरी ठीक हो। नाइट्रोजन उर्वरक लगाएँ।",
+          sugarcane: "नियमित सिंचाई करें। जैविक खाद का उपयोग करें।",
+          cotton: "बोलवॉर्म के लिए कीटनाशक छिड़कें। धूप सुनिश्चित करें।"
+        }
+      }
+    };
+    const cropTranslations = {
+  en: {
+    placeholder: "-- Select Crop --",
+    crops: { wheat: "Wheat", rice: "Rice", maize: "Maize", sugarcane: "Sugarcane", cotton: "Cotton" }
+  },
+  hi: {
+    placeholder: "-- फसल चुनें --",
+    crops: { wheat: "गेहूँ", rice: "चावल", maize: "मक्का", sugarcane: "गन्ना", cotton: "कपास" }
+  }
+};
+
+    let currentLang = "en";
+    const cropSelect = document.getElementById("cropSelect");
+    const advisoryResult = document.getElementById("advisoryResult");
+    const langToggle = document.getElementById("langToggle");
+
+    cropSelect.addEventListener("change", function() {
+      const crop = this.value;
+      if(crop){
+        advisoryResult.style.display = "block";
+        advisoryResult.innerText = translations[currentLang].cropAdvisory[crop];
+      } else {
+        advisoryResult.style.display = "none";
+      }
+    });
+
+    langToggle.addEventListener("change", function() {
+      currentLang = this.value;
+      document.getElementById("pageTitle").innerText = translations[currentLang].pageTitle;
+      document.getElementById("pageDesc").innerText = translations[currentLang].pageDesc;
+
+      const selectedCrop = cropSelect.value;
+      if(selectedCrop){
+        advisoryResult.innerText = translations[currentLang].cropAdvisory[selectedCrop];
+      }
+    });
+  </script>
+</body>
+</html>
